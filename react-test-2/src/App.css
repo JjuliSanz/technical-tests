@@ -1,0 +1,15 @@
+/* column */
+main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  place-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+main img {
+  max-height: 600px;
+}
+
