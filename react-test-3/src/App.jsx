@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
+import debounce from "just-debounce-it";
 
 function useSearch() {
   const [search, updateSearch] = useState("");
@@ -36,11 +37,19 @@ function useSearch() {
 }
 
 function App() {
-  const { movies } = useMovies();
-  const inputRef = useRef();
-  // const [error, setError] = useState(null);
-  // const [search, updateSearch] = useState("");
+  const [sort, setSort] = useState(false);
+
   const { search, updateSearch, error } = useSearch();
+  const { movies, loading, getMovies } = useMovies({ search, sort });
+  const inputRef = useRef();
+
+  const debouncedGetMovies = useCallback(
+    debounce((search) => {
+      console.log("search", search);
+      getMovies({ search });
+    }, 300),
+    [getMovies]
+  );
 
   // Whit useRef
   // const handleSubmit = (event) => {
@@ -61,17 +70,24 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    getMovies({ search });
   };
 
   const handleChange = (event) => {
-    updateSearch(event.target.value);
+    const newSearch = event.target.value;
+    updateSearch(newSearch);
+    debouncedGetMovies(newSearch);
+  };
+
+  const handleSort = () => {
+    setSort(!sort);
   };
 
   return (
     <div className="page">
       <header>
         <h1>Buscador de peliculas</h1>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} aria-label="Search movies">
           <input
             ref={inputRef}
             onChange={handleChange}
@@ -80,14 +96,13 @@ function App() {
             type="text"
             placeholder="Star Wars, Harry Potter, ..."
           />
+          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type="submit">Search</button>
         </form>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </header>
 
-      <main>
-        <Movies movies={movies} />
-      </main>
+      <main>{loading ? <p>Cargando...</p> : <Movies movies={movies} />}</main>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-function ListOfMovies({ movies }) {
+export function ListOfMovies({ movies }) {
   return (
     <ul className="movies">
       {movies.map((movie) => (
@@ -18,7 +18,5 @@ function NoMovieResults() {
 
 export function Movies({ movies }) {
   const hasMovies = movies?.length > 0;
-  {
-    hasMovies ? <ListOfMovies movies={movies} /> : <NoMovieResults />;
-  }
+  return hasMovies ? <ListOfMovies movies={movies} /> : <NoMovieResults />;
 }
