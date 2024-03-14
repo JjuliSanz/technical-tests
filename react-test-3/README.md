@@ -1,31 +1,49 @@
-## Enunciado
+# Movies Search Technical test.
 
-midu repo: https://github.com/midudev/aprendiendo-react/blob/master/projects/05-react-buscador-peliculas/README.md
-
-Crea una aplicación para buscar películas
-
-API a usar: - https://www.omdbapi.com/
-Consigue la API Key en la propia página web registrando tu email.
-[2ebfa5f9]
-http://www.omdbapi.com/?apikey=2ebfa5f9&s=
+This React technical test project, built with Vite.js for project setup and ViteTest with React Testing Library for testing, aims to create an application that interacts with external APIs to search and show movies related to the search.
 
 
-Requerimientos:
+## Overview
 
-✅ Necesita mostrar un input para buscar la película y un botón para buscar.
+The purpose of this project is to demonstrate proficiency in React development and testing. It includes the following completed requirements.
 
-✅ Lista las películas y muestra el título, año y poster.
 
-✅ Que el formulario funcione
+## Requirements:
 
-✅ Haz que las películas se muestren en un grid responsive.
+API to use: https://www.omdbapi.com/
 
-✅ Hacer el fetching de datos a la API
+✅ Display an input field to search for movies and a button to initiate the search.
 
-Primera iteración:
+✅ List movies and display their title, year, and poster.
 
-✅ Evitar que se haga la misma búsqueda dos veces seguidas.
+✅ Ensure the functionality of the form.
 
-✅ Haz que la búsqueda se haga automáticamente al escribir.
+✅ Render movies in a responsive grid layout.
 
-✅ Evita que se haga la búsqueda continuamente al escribir (debounce)
+✅ Fetch data from the API.
+
+## First Iteration:
+
+✅ Prevent duplicate searches in a row.
+
+✅ Implement automatic search while typing.
+
+✅ Implement debounce to prevent continuous searching while typing.
+
+
+## Key functionalities:
+
+- Search Movie Input: The app features an input field where users can search for movies. The search functionality includes validators to prevent searching for the same movie twice and disallowing blank spaces.
+
+- Automatic Search: The application triggers the search automatically as the user types, providing a seamless search experience.
+
+- Loading State: While fetching movies, the app displays a loading indicator to inform users of ongoing processes.
+
+- End-to-End Testing: The application has been thoroughly tested using end-to-end testing techniques to ensure its functionality across different scenarios.
+
+- Hook Testing: The custom hook responsible for searching movies has also been rigorously tested to validate its behavior and reliability.
+
+
+## Authors
+
+- [@JjuliSanz ](https://github.com/JjuliSanz)
