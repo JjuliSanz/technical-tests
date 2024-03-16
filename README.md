@@ -1,6 +1,6 @@
 # Technical Practice Projects Repository
 
-This repository is a collection of various projects that have personally helped me practice and improve my skills in developing and testing web applications with React. Each project focuses on different aspects of web development and has provided ample opportunities for honing my skills.
+This repository is a collection of various technical testing projects that have helped me practice React technical testing scenarios, as well as learn and improve my skills in app testing.
 
 Within each folder, you will find the individual projects accompanied by their respective descriptions, explaining each test or practice exercise in detail.
 
